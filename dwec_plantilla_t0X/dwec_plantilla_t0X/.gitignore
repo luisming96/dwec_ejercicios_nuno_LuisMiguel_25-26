@@ -1,16 +1,42 @@
-# Editor de código
-.idea/
-.vscode/
-
-# Sistema operativo macOS
+# Archivos de sistema
 .DS_Store
-.AppleDouble
-.LSOverride
+Thumbs.db
 
-# Iconos de macOS
-Icon?
-._*
+# Configuración de VS Code
+.vscode/
+*.code-workspace
 
-# Archivos temporales generados por el sistema
-.Spotlight-V100
-.Trashes
+# Dependencias de Node.js
+node_modules/
+
+# Archivos de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build y dist
+dist/
+build/
+out/
+
+# Archivos temporales
+*.tmp
+*.swp
+*.swo
+
+# Archivos de cobertura de tests
+coverage/
+.nyc_output/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
