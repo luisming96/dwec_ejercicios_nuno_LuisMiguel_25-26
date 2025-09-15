@@ -10,11 +10,11 @@ num2 = parseInt(prompt("Introduce el segundo número entero:"));
 let mult = 0;
 let esNegativo = (num1 < 0 && num2 > 0) || (num1 > 0 && num2 < 0);
 
-let num1Absoluto = Math.abs(num1);
-let num2Absoluto = Math.abs(num2);
+let num1Absolut = Math.abs(num1);
+let num2Absolut = Math.abs(num2);
 
-    for (let i = 0; i < num2Absoluto; i++) {
-    mult += num1Absoluto;
+    for (let i = 0; i < num2Absolut; i++) {
+    mult += num1Absolut;
 }
 
     if (esNegativo) {
