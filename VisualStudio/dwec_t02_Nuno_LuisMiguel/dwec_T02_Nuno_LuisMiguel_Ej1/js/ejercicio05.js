@@ -6,6 +6,7 @@ let numero4 = Number(prompt("Dame otro numero:"));
 let numero5 = Number(prompt("Dame otro numero:"));
 
 let media = (numero1 + numero2 + numero3 + numero4 + numero5) / 5;
+
 let resultado = "Los siguientes números introducidos son superiores a la media (" + media + "): ";
 if (numero1 > media) {
     resultado += numero1 + " ";
