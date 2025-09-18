@@ -1,6 +1,5 @@
 console.log("T02 - Ejercicio 09");
 let numero = Number(prompt("Introduce un numero:"));
-
 function esMultiploDe2(numero) {
     return numero % 2 === 0;
 } 
@@ -34,13 +33,11 @@ do {
             mensaje = "Opción no válida.";
             break;
     }
-
+    
     if (opcion !== 0) {
         alert(mensaje);
         console.log(mensaje);
     }
-
 } while (opcion !== 0);
-
 alert(mensaje);
 console.log(mensaje);
