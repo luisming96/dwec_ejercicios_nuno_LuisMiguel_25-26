@@ -1,5 +1,13 @@
 console.log("T02 - Ejercicio 09");
-let numero = Number(prompt("Introduce un numero:"));
+let numero;
+do{
+    numero =Number(prompt("Introduce un número"));
+    if (isNaN(numero) || numero <= 0) {
+        console.log("El valor introducido no es un número válido");
+        alert("El valor introducido no es un número válido");
+    }
+} while (isNaN(numero));
+
 function esMultiploDe2(numero) {
     return numero % 2 === 0;
 } 
@@ -15,7 +23,6 @@ let opcion;
 
 do {
     opcion = Number(prompt("Elige una opción: \n1. Múltiplo de 2.\n2. Múltiplo de 3.\n3. Múltiplo de 5.\n0. Salir"));
-    
     switch (opcion) {
         case 1:
             mensaje = esMultiploDe2(numero) ? `El número ${numero} es múltiplo de 2` : `El número ${numero} no es múltiplo de 2`;
@@ -33,11 +40,11 @@ do {
             mensaje = "Opción no válida.";
             break;
     }
-    
     if (opcion !== 0) {
         alert(mensaje);
         console.log(mensaje);
     }
 } while (opcion !== 0);
+
 alert(mensaje);
 console.log(mensaje);
