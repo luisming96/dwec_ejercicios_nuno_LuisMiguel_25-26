@@ -17,13 +17,9 @@ if (partes.length === 3) {
     let hoy = new Date();
     let edad = hoy.getFullYear() - anio;
 
-    if (
-      hoy.getMonth() < mes ||
-      (hoy.getMonth() === mes && hoy.getDate() < dia)
-    ) {
+    if (hoy.getMonth() < mes || (hoy.getMonth() === mes && hoy.getDate() < dia)) {
       edad--;
     }
-
     console.log("Tu edad actual es: " + edad + " años.");
   } else {
     console.log("La fecha introducida no es válida.");

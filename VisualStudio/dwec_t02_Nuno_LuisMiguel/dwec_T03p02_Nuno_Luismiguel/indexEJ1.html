@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DWEC - Ejercicios T03p02 - Luis Miguel Nuno</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="css/micss.css" />
+  </head>
+  <body>
+    <p>T03p02 - Ejercicio1 - Luis Miguel Nuno</p>
+    <p>
+      Crea una función llamada oraculo que reciba un número variable de
+      argumentos (edad, nivel de poder, número de batallas, etc.). Pueden pasar
+      el número que quieran y si no reciben ninguno el valor por defecto
+      recibido será 0. Los número podrán ser números reales. La función debe
+      hacer uso de otras funciones y una lógica básica: Usar el objeto arguments
+      para recorrer todos los valores, sabiendo que si no recibe nada, el valor
+      recibido por defecto es 0. Función 1 - Tradicional: Verificar que todos
+      los argumentos sean números. Si alguno no lo es, mostrar un error en
+      consola y devolver undefined (y no se tendrá en cuenta para el resto de
+      cálculos). Si se recibe una cadena numérica tipo "45" se convertirá en
+      número. Si recibe una cadena tipo "juan", dará el error indicado. Función
+      2 - Anónima: Calcular la media de los argumentos Función 3 - Flecha:
+      Calcular el máximo Función 4 - Flecha: Mínimo Función 5 - Tradicional:
+      Calcular la desviación respecto de la media (cada valor menos la media).
+      Función 6 - Anónima: Según el valor de la media, devolver un mensaje:
+      30: "Tu destino es entrenar más duro. Tus estadísticas están por debajo
+      del mínimo requerido." 30 - 60: "Estás en el camino del héroe. El valor
+      máximo alcanzado fue X y el mínimo Y." 60: "Eres un maestro legendario.
+      Tus desviaciones son: [...]." Finalmente crea una función autoinvocada que
+      haga uso de esta función oraculo. La IIFE no debe llamar a oraculo una
+      sola vez, sino varias veces con distintos conjuntos de datos.
+    </p>
+    <p id="output"></p>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/ejercicio01.js"></script>
+  </body>
+</html>
