@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DWEC - Ejercicios T03p02 - Luis Miguel Nuno</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="css/micss.css" />
+  </head>
+  <body>
+    <p>T03p03 - Ejercici11 - Luis Miguel Nuno</p>
+    <p></p>
+    Crear un script que almacene el nombre de dos jugadores en dos variables y
+    dos arrays de 5 elementos con los valores de "piedra, papel, tijera,
+    lagarto, spock". Estos cinco datos se almacenan en un Set. Primero el script
+    debe preguntar el nombre del jugador 1 y sus 5 jugadas, luego hará lo mismo
+    con el jugador 2. Suponemos que los nombres de los jugadores son únicos y
+    son nickname de una aplicación de juegos. Usando esos nombres como Keys,
+    creado un Map que almacene para cada jugador sus jugadas. Al pedir el nombre
+    de cada jugador, se comprobará previamente que está en el Map. En caso
+    contrario, se le vuelve a pedir un nombre de jugador. Después, también se
+    comprobará que el jugador siempre indique una jugada de forma correcta. En
+    caso contrario, se le vuelve a pedir. El usuario podrá introducir las
+    jugadas usando un número de menú o escribiendo directamente el texto de la
+    jugada (tanto en mayúscula como minúscula): piedra papel tijera lagarto
+    spock Después el script, debe comparar los valores de las listas uno a uno y
+    determinará el ganador de cada tirada. Al finalizar las 5 rondas, mostrará
+    quién ganó y los puntos finales. Si hay empate también se contemplará.
+    Reglas Tijeras cortan papel Papel cubre piedra Piedra aplasta lagarto
+    Lagarto envenena Spock Spock destruye tijeras Tijeras decapitan lagarto
+    Lagarto come papel Papel desaprueba Spock Spock vaporiza piedra Piedra
+    aplasta tijeras Ampliación: Juego contra la máquina. El script al pedir el
+    nombre del segundo jugador nos permitirá también jugar contra la máquina. En
+    ese caso, las 5 jugadas de la máquina se generarán de forma aleatoria.
+
+    <p id="output"></p>
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/ejercicio11.js"></script>
+  </body>
+</html>
