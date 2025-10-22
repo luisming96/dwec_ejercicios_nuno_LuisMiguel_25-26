@@ -82,17 +82,9 @@ function menuPrincipal() {
     let op = "";
     while (op !== "4") {
         console.clear();
-        console.log("MENÚ PRINCIPAL");
-        if (categorias.length === 0) {
-            console.log("(No hay categorías)");
-        } else {
-            for (let i = 0; i < categorias.length; i++) {
-                let numTareas = categorias[i][1].length;
-                console.log((i + 1) + ". " + categorias[i][0] + " - " + numTareas + " tareas");
-            }
-        }
-        console.log("\n1. Ver/entrar en una categoría");
-        console.log("2. Crear nueva categoría");
+        console.log("=== MENÚ 1 ===");
+        console.log("1. Listar categorías");
+        console.log("2. Añadir nueva categoría");
         console.log("3. Borrar categoría");
         console.log("4. Salir");
         op = prompt("Opción:");
@@ -100,13 +92,10 @@ function menuPrincipal() {
         switch (op) {
             case "1":
                 if (categorias.length === 0) {
-                    console.log("No hay categorías. Cree una primero.");
+                    console.log("(No hay categorías)");
+                    prompt("Presione Enter...");
                 } else {
-                    mostrarCategorias();
-                    let num = parseInt(prompt("¿Qué categoría abrir? (0=atrás)"));
-                    if (num > 0 && num <= categorias.length) {
-                        menuTareas(categorias[num - 1]);
-                    }
+                    menuSeleccionarCategoria();
                 }
                 break;
             case "2":
@@ -116,8 +105,27 @@ function menuPrincipal() {
                 borrarCategoria();
                 break;
             case "4":
-                console.log("Saliendo..");
+                console.log("Saliendo...");
                 break;
+        }
+    }
+}
+
+function menuSeleccionarCategoria() {
+    let op = "";
+    while (op !== "0") {
+        console.clear();
+        console.log("MENÚ 2");
+        mostrarCategorias();
+        console.log("0. Atrás");
+        op = prompt("Seleccione categoría (0=atrás):");
+
+        let num = parseInt(op);
+        if (num > 0 && num <= categorias.length) {
+            menuTareas(categorias[num - 1]);
+        } else if (op !== "0") {
+            console.log("Opción no válida");
+            prompt("Presione Enter...");
         }
     }
 }
@@ -126,19 +134,19 @@ function menuTareas(categoria) {
     let op = "";
     while (op !== "0") {
         console.clear();
-        console.log("CATEGORÍA: " + categoria[0]);
+        console.log("MENÚ 3 - Categoría: " + categoria[0] + " ===");
         if (categoria[1].length === 0) {
             console.log("(No hay tareas)");
         } else {
             for (let i = 0; i < categoria[1].length; i++) {
                 let tarea = categoria[1][i];
-                console.log((i + 1) + ". " + tarea[0] + " - " + tarea[1]);
+                console.log((i + 1) + ". " + tarea[0] + " (" + tarea[1] + ")");
             }
         }
         console.log("\n1. Añadir nueva tarea");
         console.log("2. Borrar tarea");
         console.log("3. Marcar tareas como hechas");
-        console.log("0. Volver");
+        console.log("0. Atrás");
         op = prompt("Opción:");
 
         switch (op) {
