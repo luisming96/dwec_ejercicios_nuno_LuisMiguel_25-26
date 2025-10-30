@@ -12,10 +12,10 @@ function mostrarCategorias() {
 function crearCategoria() {
     let continuar = "s";
     while (continuar.toLowerCase() === "s") {
-        let nombre = prompt("Introduce el nombre de la categoria a crear:");
+        let nombre = prompt("Nombre de la categoria a crear:");
         
         if (!nombre || nombre.trim() === "") {
-            alert("El nombre de la categoría no puede estar vacío.");
+            alert("El nombre no puede estar vacío.");
             continuar = prompt("¿Desea intentar de nuevo? (s/n):") || "n";
             continue;
         }
@@ -88,6 +88,7 @@ function menuPrincipal() {
     while (op !== "4") {
         console.clear();
         console.log("MENÚ 1");
+        console.log("======");
         console.log("1. Listar categorías");
         console.log("2. Añadir nueva categoría");
         console.log("3. Borrar categoría");
@@ -121,6 +122,7 @@ function menuSeleccionarCategoria() {
     while (op !== "0") {
         console.clear();
         console.log("MENÚ 2");
+        console.log("======");
         mostrarCategorias();
         console.log("0. Atrás");
         op = prompt("Seleccione categoría (0=atrás):");
@@ -139,7 +141,8 @@ function menuTareas(categoria) {
     let op = "";
     while (op !== "0") {
         console.clear();
-        console.log("Menú 3. Categorías " + categoria[0]);
+        console.log("Menú 3. Categoría " + categoria[0]);
+        console.log("======");
         
         if (categoria[1].length === 0) {
             console.log("(No hay tareas)");
@@ -186,17 +189,5 @@ function menuTareas(categoria) {
 
 if (categorias.length === 0) {
     crearCategoria();
-    if (categorias.length > 0) {
-        let opcion = prompt("¿Qué hacer? (1=Crear tarea, 2=Crear categoría):");
-        if (opcion === "1") {
-            let continuar = "s";
-            while (continuar.toLowerCase() === "s") {
-                crearTarea(categorias[0]);
-                continuar = prompt("¿Añadir otra tarea? (s/n):") || "n";
-            }
-        } else if (opcion === "2") {
-            crearCategoria();
-        }
-    }
 }
 menuPrincipal();
