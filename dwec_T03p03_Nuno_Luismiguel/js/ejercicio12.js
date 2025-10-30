@@ -88,7 +88,6 @@ function menuPrincipal() {
     while (op !== "4") {
         console.clear();
         console.log("MENÚ 1");
-        console.log("======");
         console.log("1. Listar categorías");
         console.log("2. Añadir nueva categoría");
         console.log("3. Borrar categoría");
