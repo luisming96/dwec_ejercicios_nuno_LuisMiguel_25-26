@@ -21,7 +21,7 @@ function crearCategoria() {
         }
         
         categorias.push([nombre.trim(), []]);
-        console.log("✓ Categoría '" + nombre.trim() + "' creada correctamente.");
+        console.log("Categoría '" + nombre.trim() + "' creada correctamente.");
         continuar = prompt("¿Añadir otra categoría? (s/n):") || "n";
     }
 }
@@ -87,7 +87,7 @@ function menuPrincipal() {
     let op = "";
     while (op !== "4") {
         console.clear();
-        console.log("=== MENÚ 1 ===");
+        console.log("MENÚ 1");
         console.log("1. Listar categorías");
         console.log("2. Añadir nueva categoría");
         console.log("3. Borrar categoría");
@@ -139,8 +139,7 @@ function menuTareas(categoria) {
     let op = "";
     while (op !== "0") {
         console.clear();
-        console.log("Menú 3. Categoría " + categoria[0]);
-        console.log("======");
+        console.log("Menú 3. Categorías " + categoria[0]);
         
         if (categoria[1].length === 0) {
             console.log("(No hay tareas)");
