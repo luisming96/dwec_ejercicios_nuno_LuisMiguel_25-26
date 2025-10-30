@@ -9,14 +9,34 @@ function mostrarCategorias() {
     }
 }
 
+function categoriaExiste(nombre) {
+    for (let i = 0; i < categorias.length; i++) {
+        if (categorias[i][0].toLowerCase() === nombre.toLowerCase()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function crearCategoria() {
     let continuar = "s";
     while (continuar.toLowerCase() === "s") {
-        let nombre = prompt("Nueva categoría:");
-        if (nombre && nombre.trim() !== "") {
-            categorias.push([nombre.trim(), []]);
-            console.log("Categoría creada");
+        let nombre = prompt("Introduce el nombre de la nueva categoría:");
+        
+        if (!nombre || nombre.trim() === "") {
+            alert("El nombre de la categoría no puede estar vacío.");
+            continuar = prompt("¿Desea intentar de nuevo? (s/n):") || "n";
+            continue;
         }
+        
+        if (categoriaExiste(nombre.trim())) {
+            alert("Ya existe una categoría con ese nombre.");
+            continuar = prompt("¿Desea intentar de nuevo? (s/n):") || "n";
+            continue;
+        }
+        
+        categorias.push([nombre.trim(), []]);
+        console.log("✓ Categoría '" + nombre.trim() + "' creada correctamente.");
         continuar = prompt("¿Añadir otra categoría? (s/n):") || "n";
     }
 }
@@ -61,9 +81,9 @@ function completarTarea(categoria) {
             if (num >= 0 && num < categoria[1].length) {
                 if (categoria[1][num][1] === "toDo") {
                     categoria[1][num][1] = "done";
-                    console.log("Completada");
+                    console.log("Tarea '" + categoria[1][num][0] + "' completada");
                 } else {
-                    console.log("Ya estaba completada");
+                    console.log("La tarea '" + categoria[1][num][0] + "' ya estaba completada");
                 }
             }
         }
@@ -134,7 +154,9 @@ function menuTareas(categoria) {
     let op = "";
     while (op !== "0") {
         console.clear();
-        console.log("MENÚ 3 - Categoría: " + categoria[0] + " ===");
+        console.log("Menú 3. Categoría " + categoria[0]);
+        console.log("======");
+        
         if (categoria[1].length === 0) {
             console.log("(No hay tareas)");
         } else {
@@ -143,29 +165,37 @@ function menuTareas(categoria) {
                 console.log((i + 1) + ". " + tarea[0] + " (" + tarea[1] + ")");
             }
         }
-        console.log("\n1. Añadir nueva tarea");
-        console.log("2. Borrar tarea");
-        console.log("3. Marcar tareas como hechas");
-        console.log("0. Atrás");
+        
+        let opcionAnadir = categoria[1].length + 1;
+        let opcionBorrar = categoria[1].length + 2;
+        let opcionAtras = categoria[1].length + 3;
+        
+        console.log(opcionAnadir + ". Añadir nueva tarea");
+        console.log(opcionBorrar + ". Borrar tarea");
+        console.log(opcionAtras + ". Atrás");
+        
         op = prompt("Opción:");
+        let numOp = parseInt(op);
 
-        switch (op) {
-            case "1":
-                let continuar = "s";
-                while (continuar.toLowerCase() === "s") {
-                    crearTarea(categoria);
-                    continuar = prompt("¿Añadir otra tarea? (s/n):") || "n";
-                }
-                break;
-            case "2":
-                borrarTarea(categoria);
-                break;
-            case "3":
-                completarTarea(categoria);
-                break;
-            case "0":
-                console.log("Volviendo...");
-                break;
+        if (numOp === opcionAnadir) {
+            let continuar = "s";
+            while (continuar.toLowerCase() === "s") {
+                crearTarea(categoria);
+                continuar = prompt("¿Añadir otra tarea? (s/n):") || "n";
+            }
+        } else if (numOp === opcionBorrar) {
+            borrarTarea(categoria);
+        } else if (numOp === opcionAtras) {
+            console.log("Volviendo...");
+            break;
+        } else if (numOp > 0 && numOp <= categoria[1].length) {
+            if (categoria[1][numOp - 1][1] === "toDo") {
+                categoria[1][numOp - 1][1] = "done";
+                console.log("Tarea '" + categoria[1][numOp - 1][0] + "' completada");
+            } else {
+                console.log("La tarea '" + categoria[1][numOp - 1][0] + "' ya estaba completada");
+            }
+            prompt("Presione Enter...");
         }
     }
 }

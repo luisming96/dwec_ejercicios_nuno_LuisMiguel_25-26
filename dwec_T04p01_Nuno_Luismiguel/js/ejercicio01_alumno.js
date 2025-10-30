@@ -1,7 +1,8 @@
 console.log("T04p01 - Ejercicio 01");
-function Alumno(dni, nombre, fechaNacimiento, nota1, nota2 , nota3, sexo) {
+function Alumno(dni, nombre, edad, fechaNacimiento, nota1, nota2 , nota3, sexo) {
     this.dni = dni;
     this.nombre = nombre;
+    this.edad = edad;
     this.fechaNacimiento = fechaNacimiento;
     this.nota1 = nota1;
     this.nota2 = nota2;
@@ -11,13 +12,13 @@ function Alumno(dni, nombre, fechaNacimiento, nota1, nota2 , nota3, sexo) {
     this.calcularEdad();
     this.calcularNota();
 }
-Alumno.prototype.getDni = function(dni){
+Alumno.prototype.getDni = function(){
     return this.dni;
 };
 Alumno.prototype.setDni = function(dni){
     this.dni = dni;
 };
-Alumno.prototype.getNombre = function(nombre){
+Alumno.prototype.getNombre = function(){
     return this.nombre;
 };
 Alumno.prototype.setNombre = function(nombre){
