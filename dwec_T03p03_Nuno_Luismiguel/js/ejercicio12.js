@@ -9,28 +9,13 @@ function mostrarCategorias() {
     }
 }
 
-function categoriaExiste(nombre) {
-    for (let i = 0; i < categorias.length; i++) {
-        if (categorias[i][0].toLowerCase() === nombre.toLowerCase()) {
-            return true;
-        }
-    }
-    return false;
-}
-
 function crearCategoria() {
     let continuar = "s";
     while (continuar.toLowerCase() === "s") {
-        let nombre = prompt("Introduce el nombre de la nueva categoría:");
+        let nombre = prompt("Introduce el nombre de la categoria a crear:");
         
         if (!nombre || nombre.trim() === "") {
             alert("El nombre de la categoría no puede estar vacío.");
-            continuar = prompt("¿Desea intentar de nuevo? (s/n):") || "n";
-            continue;
-        }
-        
-        if (categoriaExiste(nombre.trim())) {
-            alert("Ya existe una categoría con ese nombre.");
             continuar = prompt("¿Desea intentar de nuevo? (s/n):") || "n";
             continue;
         }
