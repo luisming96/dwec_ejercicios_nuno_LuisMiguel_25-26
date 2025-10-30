@@ -189,16 +189,14 @@ function menuTareas(categoria) {
 
 if (categorias.length === 0) {
     crearCategoria();
-    if (categorias.length > 0) {
-        let opcion = prompt("¿Qué desea hacer?\n1. Crear tareas en '" + categorias[0][0] + "'\n2. Crear otra categoría");
-        if (opcion === "1") {
+    if (categorias.length === 1) {
+        let opcion = prompt("¿Desea añadir tareas en '" + categorias[0][0] + "' ahora? (s/n):");
+        if (opcion && opcion.toLowerCase() === "s") {
             let continuar = "s";
             while (continuar.toLowerCase() === "s") {
                 crearTarea(categorias[0]);
                 continuar = prompt("¿Añadir otra tarea? (s/n):") || "n";
             }
-        } else if (opcion === "2") {
-            crearCategoria();
         }
     }
 }
