@@ -29,8 +29,10 @@ function crearCategoria() {
 function borrarCategoria() {
     mostrarCategorias();
     let num = parseInt(prompt("¿Cuál borrar?"));
+    
     if (num > 0 && num <= categorias.length) {
         let categoria = categorias[num - 1];
+        let nombreCategoria = categoria[0];
         let tienePendientes = false;
         
         for (let i = 0; i < categoria[1].length; i++) {
@@ -41,12 +43,22 @@ function borrarCategoria() {
         }
         
         if (tienePendientes) {
-            console.log("No se puede borrar: tiene tareas pendientes");
-        } else if (confirm("¿Borrar categoría?")) {
-            categorias.splice(num - 1, 1);
-            console.log("Categoría borrada");
+            console.log("No se puede borrar '" + nombreCategoria + "': tiene tareas pendientes (toDo).");
+            
+        } else {
+            let confirmacion = prompt("¿Estás seguro de borrar la categoría '" + nombreCategoria + "'? (s/n):") || 'n';
+            
+            if (confirmacion.toLowerCase() === "s") {
+                categorias.splice(num - 1, 1);
+                console.log("Categoría '" + nombreCategoria + "' borrada correctamente.");
+            } else {
+                console.log("Borrado de categoría cancelado.");
+            }
         }
+    } else {
+        console.log("Número de categoría no válido.");
     }
+    prompt("Presione Enter...");
 }
 
 function crearTarea(categoria) {
@@ -154,7 +166,6 @@ function menuTareas(categoria) {
         let opcionBorrar = categoria[1].length + 2;
         let opcionAtras = categoria[1].length + 3;
         
-        console.log("---");
         console.log(opcionAnadir + ". Añadir nueva tarea");
         console.log(opcionBorrar + ". Borrar tarea");
         console.log(opcionAtras + ". Atrás");
