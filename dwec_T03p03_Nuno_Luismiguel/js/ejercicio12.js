@@ -152,7 +152,7 @@ function menuTareas(categoria) {
     while (op !== "0") {
         console.clear();
         console.log("Menú 3. Categoría " + categoria[0]);
-        
+
         if (categoria[1].length === 0) {
             console.log("(No hay tareas)");
         } else {
@@ -164,10 +164,13 @@ function menuTareas(categoria) {
         
         let opcionAnadir = categoria[1].length + 1;
         let opcionBorrar = categoria[1].length + 2;
-        let opcionAtras = categoria[1].length + 3;
+        let opcionCompletar = categoria[1].length + 3; 
+        let opcionAtras = categoria[1].length + 4;     
         
+        console.log("---");
         console.log(opcionAnadir + ". Añadir nueva tarea");
         console.log(opcionBorrar + ". Borrar tarea");
+        console.log(opcionCompletar + ". Completar tarea");
         console.log(opcionAtras + ". Atrás");
         
         op = prompt("Opción:");
@@ -182,8 +185,10 @@ function menuTareas(categoria) {
         } else if (numOp === opcionBorrar) {
             borrarTarea(categoria); 
             prompt("Presione Enter...");
+        } else if (numOp === opcionCompletar) {
+            completarTarea(categoria);
+            prompt("Presione Enter...");
         } else if (numOp === opcionAtras) {
-
             console.log("Volviendo...");
             break;
         } else {

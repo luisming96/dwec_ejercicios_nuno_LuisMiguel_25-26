@@ -65,72 +65,56 @@ function Alumno(dni, nombre, edad, fechaNacimiento, nota1, nota2, nota3, sexo) {
 }
 
 Object.defineProperty(Alumno.prototype, 'dni', {
-    get: function() {
-        return this._dni;
-    },
-    set: function(dni) {
-        this._dni = dni;
-    }
+    get: function() { return this._dni; },
+    set: function(dni) {this._dni = dni;}
 });
+
 Object.defineProperty(Alumno.prototype, 'nombre', {
-    get: function() {
-        return this._nombre;
-    },
-    set: function(nombre) {
-        this._nombre = nombre;
-    }
+    get: function() {return this._nombre; },
+    set: function(nombre) {this._nombre = nombre; }
 });
+
 Object.defineProperty(Alumno.prototype, 'edad', {
-    get: function() {
-        return this._edad;
-    }
+    get: function() { return this._edad; }
 });
+
 Object.defineProperty(Alumno.prototype, 'fechaNacimiento', {
-    get: function() {
-        return this._fechaNacimiento;
-    },
+    get: function() {return this._fechaNacimiento; },
     set: function(fechaNacimiento) {
         this._fechaNacimiento = fechaNacimiento;
         this.calcularEdad();
     }
 });
+
 Object.defineProperty(Alumno.prototype, 'notaFinal', {
-    get: function() {
-        return this._notaFinal;
-    }
+    get: function() { return this._notaFinal; }
 });
+
 Object.defineProperty(Alumno.prototype, 'nota1', {
-    get: function() {
-        return this._nota1;
-    },
+    get: function() { return this._nota1; },
     set: function(nota1) {
         this._nota1 = nota1;
         this.calcularNota();
     }
 });
+
 Object.defineProperty(Alumno.prototype, 'nota2', {
-    get: function() {
-        return this._nota2;
-    },
+    get: function() { return this._nota2; },
     set: function(nota2) {
         this._nota2 = nota2;
         this.calcularNota();
     }
 });
+
 Object.defineProperty(Alumno.prototype, 'nota3', {
-    get: function() {
-        return this._nota3;
-    },
+    get: function() { return this._nota3; },
     set: function(nota3) {
         this._nota3 = nota3;
         this.calcularNota();
     }
 });
+
 Object.defineProperty(Alumno.prototype, 'sexo', {
-    get: function() {
-        return this._sexo;
-    },
-    set: function(sexo) {
-        this._sexo = sexo;
-    }
+    get: function() { return this._sexo; },
+    set: function(sexo) {this._sexo = sexo; }
 });
