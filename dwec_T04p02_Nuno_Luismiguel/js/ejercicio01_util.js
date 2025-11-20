@@ -31,23 +31,23 @@ class Util {
     }
 
     static validarPrecio(precio) {
-        return Util.validarReal(precio) && Number(precio) > 0;
+        return Util.validarReal(precio) && precio > 0;
     }
 
     static validarTamanoArchivo(tamano) {
-        return Util.validarReal(tamano) && Number(tamano) > 0;
+        return Util.validarReal(tamano) && tamano > 0;
     }
 
     static validarPeso(peso) {
-        return Util.validarReal(peso) && Number(peso) > 0;
+        return Util.validarReal(peso) && peso > 0;
     }
 
     static validarStock(stock) {
-        return Util.validarEntero(stock) && Number(stock) > 0;
+        return Util.validarEntero(stock) && stock > 0;
     }
 
     static validarDiasEnvio(dias) {
-        return Util.validarEntero(dias) && Number(dias) > 0;
+        return Util.validarEntero(dias) && dias > 0;
     }
 
     static validarDimensiones(dimensiones) {
@@ -94,7 +94,7 @@ class Util {
         if (!Util.validarPrecio(precioSinIVA)) {
             throw new Error("El precio para calcular el IVA no es válido.");
         }
-        if (!Util.validarReal(iva) || Number(iva) < 0) {
+        if (!Util.validarReal(iva) || iva < 0) {
             throw new Error("El porcentaje de IVA no es válido.");
         }
         return Number(precioSinIVA) * (1 + (Number(iva) / 100));

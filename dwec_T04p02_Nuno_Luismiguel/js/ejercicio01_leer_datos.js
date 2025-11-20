@@ -1,10 +1,4 @@
 class LeerDatos {
-    constructor() {
-        if (this.constructor === LeerDatos) {
-            throw new Error("No se puede instanciar la clase abstracta LeerDatos");
-        }
-    }
-
     leerEntero(mensaje) { 
         throw new Error("Método no implementado"); 
     }
