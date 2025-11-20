@@ -171,7 +171,7 @@ for (let personaje of personajes) {
     console.log("Personaje:", personaje.nombre)
 };
 console.log("Bucle for clásico (Con contador)");
-// número de posición
+// Recorre con un índice numérico
 for (let i = 0; i < personajes.length; i++) {
     console.log("Índice", i, ":", personajes[i].nombre)
 };
@@ -191,7 +191,7 @@ for (let clave of personajes.keys()) {
     console.log("Clave:", clave)
 };
 console.log("Método .values()");
-// Devuelve solo los valores
+// Devuelve solo los obejtos como for of
 for (let valor of personajes.values()) {
     console.log("Valor:", valor.nombre)
 };

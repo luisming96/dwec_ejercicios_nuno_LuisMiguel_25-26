@@ -1,13 +1,20 @@
-console.log("T04p02 - Ejercicio 01");
 class Util {
     static validarEntero(valor) {
-        return typeof valor === 'number' && Number.isInteger(valor);
+        if (valor === null || typeof valor === "boolean" || String(valor).trim() === "") {
+            return false;
+        }
+        const numero = Number(valor);
+        return Number.isInteger(numero);
     }
 
     static validarReal(valor) {
-        return typeof valor === 'number' && isFinite(valor);
+        if (valor === null || typeof valor === "boolean" || String(valor).trim() === "") {
+            return false;
+        }
+        const numero = Number(valor);
+        return !Number.isNaN(numero);
     }
-    
+
     static validarTitulo(titulo) {
         return typeof titulo === 'string' && titulo.trim().length >= 1;
     }
@@ -24,77 +31,72 @@ class Util {
     }
 
     static validarPrecio(precio) {
-        return Util.validarReal(precio) && precio > 0;
+        return Util.validarReal(precio) && Number(precio) > 0;
     }
 
-    static validarTamanoArchivo(tamanoArchivo) {
-        return Util.validarReal(tamanoArchivo) && tamanoArchivo > 0;
+    static validarTamanoArchivo(tamano) {
+        return Util.validarReal(tamano) && Number(tamano) > 0;
     }
 
     static validarPeso(peso) {
-        return Util.validarReal(peso) && peso > 0;
+        return Util.validarReal(peso) && Number(peso) > 0;
     }
 
     static validarStock(stock) {
-        return Util.validarEntero(stock) && stock >= 0;
+        return Util.validarEntero(stock) && Number(stock) > 0;
     }
 
     static validarDiasEnvio(dias) {
-        return Util.validarEntero(dias) && dias > 0;
+        return Util.validarEntero(dias) && Number(dias) > 0;
     }
 
     static validarDimensiones(dimensiones) {
         if (typeof dimensiones !== 'string') return false;
-        return /^(\d+(\.\d+)?)x(\d+(\.\d+)?)x(\d+(\.\d+)?)$/.test(dimensiones.trim());
+        return /^\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?$/.test(dimensiones.trim());
     }
-    
+
     static validarFormato(formatoLeido, setFormatosValidos) {
-        if (typeof formatoLeido !== 'string' || !(setFormatosValidos instanceof Set)) return false;
-        return setFormatosValidos.has(formatoLeido.toLowerCase());
+        if (!formatoLeido || !setFormatosValidos) return false;
+        return setFormatosValidos.has(formatoLeido);
     }
 
     static validarGenero(generoLeido, setGenerosValidos) {
-        if (typeof generoLeido !== 'string' || !(setGenerosValidos instanceof Set)) return false;
+        if (!generoLeido || !setGenerosValidos) return false;
         return setGenerosValidos.has(generoLeido);
     }
-    
+
     static validarCadenaFecha(valor) {
         if (typeof valor !== 'string') return false;
         const regex = /^\d{1,4}[-/]\d{1,2}[-/]\d{1,4}$/;
         return regex.test(valor.trim());
     }
-    
+
     static validarFecha(valor) {
-        let fecha;
-        if (valor instanceof Date) {
-            fecha = valor;
-        } else if (typeof valor === 'string' && Util.validarCadenaFecha(valor)) {
-            fecha = new Date(valor.replace(/-/g, '/'));
-        } else {
-            return false;
+        if (valor instanceof Date) return !isNaN(valor.getTime());
+        if (typeof valor === 'string' && Util.validarCadenaFecha(valor)) {
+            const fecha = new Date(valor.replace(/-/g, '/'));
+            return !isNaN(fecha.getTime());
         }
-        return !isNaN(fecha.getTime());
+        return false;
     }
 
-    static esMesPromocion(fecha, arrayMesesPromocion) {
-        if (!Util.validarFecha(fecha)) {
-            throw new Error("La fecha proporcionada no es un objeto Date válido para comprobar promoción.");
+    static esMesPromocion(fecha, array_meses_promocion) {
+        let fechaObj = fecha;
+        if (typeof fecha === 'string') {
+            fechaObj = new Date(fecha.replace(/-/g, '/'));
         }
-        if (!Array.isArray(arrayMesesPromocion)) {
-            throw new Error("El array de meses de promoción no es válido.");
-        }
-
-        const mes = fecha.getMonth();
-        return arrayMesesPromocion.includes(mes);
+        if (!Util.validarFecha(fechaObj)) return false;
+        const mes = fechaObj.getMonth() + 1;
+        return array_meses_promocion.includes(mes);
     }
 
     static calcularPrecioConIVA(precioSinIVA, iva) {
         if (!Util.validarPrecio(precioSinIVA)) {
-            throw new Error("Precio sin IVA inválido para el cálculo.");
+            throw new Error("El precio para calcular el IVA no es válido.");
         }
-        if (!Util.validarReal(iva) || iva < 0) {
-            throw new Error("Tasa de IVA inválida para el cálculo.");
+        if (!Util.validarReal(iva) || Number(iva) < 0) {
+            throw new Error("El porcentaje de IVA no es válido.");
         }
-        return precioSinIVA * (1 + iva);
+        return Number(precioSinIVA) * (1 + (Number(iva) / 100));
     }
 }

@@ -1,96 +1,134 @@
 class LeerDatos {
-    metodo(mensaje_o_id) { 
+    constructor() {
+        if (this.constructor === LeerDatos) {
+            throw new Error("No se puede instanciar la clase abstracta LeerDatos");
+        }
+    }
+
+    leerEntero(mensaje) { 
+        throw new Error("Método no implementado"); 
+    }
+    leerEnteroHasta(mensaje) { 
+        throw new Error("Método no implementado"); 
+    }
+    leerReal(mensaje) { 
+        throw new Error("Método no implementado"); 
+    }
+    leerEnteroEntre(mensaje, min, max) { 
+        throw new Error("Método no implementado"); 
+    }
+    leerEnteroEntreHasta(mensaje, min, max) { 
+        throw new Error("Método no implementado"); 
+    }
+    leerCadena(mensaje, longitud, patron) { 
+        throw new Error("Método no implementado"); 
+    }
+    leerCadenaHasta(mensaje, longitud, patron) { 
         throw new Error("Método no implementado"); 
     }
 }
 
 class LeerDatosPrompt extends LeerDatos {
-    
-    leerEntero(mensaje_o_id) {
-        const valorLeido = prompt(mensaje_o_id);
-        const numero = parseInt(valorLeido); 
 
-        if (!Util.validarEntero(numero)) {
-            throw new Error(`El valor introducido "${valorLeido}" no es un número entero válido.`);
-        }
-        return numero;
-    }
-    
-    leerReal(mensaje_o_id) {
-        const valorLeido = prompt(mensaje_o_id);
-        const numero = parseFloat(valorLeido);
-
-        if (!Util.validarReal(numero)) {
-            throw new Error(`El valor introducido "${valorLeido}" no es un número real válido.`);
-        }
-        return numero;
-    }
-    
-    leerEnteroEntre(mensaje_o_id, min, max) {
-        const numero = this.leerEntero(mensaje_o_id); 
+    leerEntero(mensaje) {
+        const valor = prompt(mensaje);
         
-        if (numero < min || numero > max) {
-            throw new Error(`El número debe estar entre ${min} y ${max} (ambos incluidos).`);
-        }
-        return numero;
-    }
-
-    leerCadena(mensaje_o_id, longitudMinima = 1, patron = null) {
-        const cadena = prompt(mensaje_o_id);
-
-        if (typeof cadena !== 'string' || cadena.trim().length < longitudMinima) {
-            throw new Error(`La cadena no puede estar vacía y debe tener al menos ${longitudMinima} carácter(es).`);
+        if (valor === null) {
+            throw new Error("Entrada cancelada por el usuario.");
         }
         
-        if (patron && !patron.test(cadena)) {
-            throw new Error("La cadena no cumple con el patrón requerido.");
+        if (!Util.validarEntero(valor)) {
+            throw new Error(`El valor introducido no es un número entero válido.`);
         }
-
-        return cadena.trim();
+        return Number(valor);
     }
 
-    leerEnteroHasta(mensaje_o_id) {
+    leerEnteroHasta(mensaje) {
         let valor;
         let esValido = false;
-        while (!esValido) {
+        
+        do {
             try {
-                valor = this.leerEntero(mensaje_o_id);
+                valor = this.leerEntero(mensaje);
                 esValido = true;
             } catch (error) {
-                console.error("Error de entrada:", error.message);
-                alert("Error de entrada: " + error.message + ". Inténtalo de nuevo.");
+                console.log(error.message);
             }
+        } while (!esValido);
+        return valor;
+    }
+
+    leerReal(mensaje) {
+        const valor = prompt(mensaje);
+        
+        if (valor === null) {
+            throw new Error("Entrada cancelada por el usuario.");
+        }
+        
+        if (!Util.validarReal(valor)) {
+            throw new Error(`El valor introducido no es un número real válido.`);
+        }
+        return Number(valor);
+    }
+
+    leerEnteroEntre(mensaje, min, max) {
+        const valor = this.leerEntero(mensaje);
+        
+        if (valor < min || valor > max) {
+            throw new Error(`El número debe estar entre ${min} y ${max}.`);
         }
         return valor;
     }
 
-    leerEnteroEntreHasta(mensaje_o_id, min, max) {
+    leerEnteroEntreHasta(mensaje, min, max) {
         let valor;
         let esValido = false;
-        while (!esValido) {
+        
+        do {
             try {
-                valor = this.leerEnteroEntre(mensaje_o_id, min, max);
+                valor = this.leerEnteroEntre(mensaje, min, max);
                 esValido = true;
             } catch (error) {
-                console.error("Error de entrada:", error.message);
-                alert("Error de entrada: " + error.message + ". Inténtalo de nuevo.");
+                console.log(error.message);
             }
-        }
+        } while (!esValido);
         return valor;
     }
-    
-    leerCadenaHasta(mensaje_o_id, longitudMinima = 1, patron = null) {
-        let valor;
-        let esValido = false;
-        while (!esValido) {
-            try {
-                valor = this.leerCadena(mensaje_o_id, longitudMinima, patron);
-                esValido = true;
-            } catch (error) {
-                console.error("Error de entrada:", error.message);
-                alert("Error de entrada: " + error.message + ". Inténtalo de nuevo.");
+
+    leerCadena(mensaje, longitud = 1, patron = null) {
+        const valor = prompt(mensaje);
+        
+        if (valor === null) {
+            throw new Error("Entrada cancelada por el usuario.");
+        }
+        
+        const valorLimpio = valor.trim();
+        
+        if (valorLimpio.length < longitud) {
+            throw new Error(`El texto debe tener al menos ${longitud} carácter(es).`);
+        }
+
+        if (patron !== null) {
+            const regex = (patron instanceof RegExp) ? patron : new RegExp(patron);
+            if (!regex.test(valorLimpio)) {
+                throw new Error(`El texto no cumple con el formato requerido.`);
             }
         }
+        return valorLimpio;
+    }
+
+    leerCadenaHasta(mensaje, longitud = 1, patron = null) {
+        let valor;
+        let esValido = false;
+        
+        do {
+            try {
+                valor = this.leerCadena(mensaje, longitud, patron);
+                esValido = true;
+            } catch (error) {
+                console.log(error.message);
+            }
+        } while (!esValido);
         return valor;
     }
 }
