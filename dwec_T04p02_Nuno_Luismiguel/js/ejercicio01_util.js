@@ -25,6 +25,10 @@ class Util {
         if (nombreLimpio.length < 3) return false;
         return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]+$/.test(nombreLimpio);
     }
+    
+    static validarDni(dni){
+        return Util.validarEntero(dni) && Number (dni) > 0;
+    }
 
     static validarDireccion(direccion) {
         return typeof direccion === 'string' && direccion.trim().length >= 3;
@@ -43,7 +47,7 @@ class Util {
     }
 
     static validarStock(stock) {
-        return Util.validarEntero(stock) && stock > 0;
+        return Util.validarEntero(stock) && Number (stock) >= 0;
     }
 
     static validarDiasEnvio(dias) {
@@ -88,15 +92,5 @@ class Util {
         if (!Util.validarFecha(fechaObj)) return false;
         const mes = fechaObj.getMonth() + 1;
         return array_meses_promocion.includes(mes);
-    }
-
-    static calcularPrecioConIVA(precioSinIVA, iva) {
-        if (!Util.validarPrecio(precioSinIVA)) {
-            throw new Error("El precio para calcular el IVA no es válido.");
-        }
-        if (!Util.validarReal(iva) || iva < 0) {
-            throw new Error("El porcentaje de IVA no es válido.");
-        }
-        return Number(precioSinIVA) * (1 + (Number(iva) / 100));
     }
 }
