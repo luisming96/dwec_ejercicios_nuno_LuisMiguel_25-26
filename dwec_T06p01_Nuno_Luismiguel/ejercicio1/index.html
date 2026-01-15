@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="bg-dark text-white py-3">
+        <div class="container">
+            <h1>Harry Potter API</h1>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#bienvenida">Bienvenida</a></li>
+                <li class="nav-item"><a class="nav-link" href="#buscador">Buscador</a></li>
+                <li class="nav-item"><a class="nav-link" href="#favoritos">Favoritos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#quienes-somos">Quiénes somos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <section id="bienvenida" class="mb-5">
+            <h2>Bienvenida</h2>
+            <div id="loader" class="text-center my-5">
+                <div class="spinner-border"></div>
+                <p>Cargando...</p>
+            </div>
+            <div id="tarjetas" class="row oculto"></div>
+        </section>
+
+        <section id="buscador" class="mb-5">
+            <h2>Buscador</h2>
+            <input type="text" id="inputBuscar" class="form-control mb-3" placeholder="Buscar personaje">
+            <button id="btnBuscar" class="btn btn-primary">Buscar</button>
+            
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Casa</th>
+                        <th>Especie</th>
+                        <th>Patronus</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaResultados"></tbody>
+            </table>
+        </section>
+        <section id="favoritos" class="mb-5">
+            <h2>Favoritos</h2>
+            <p>La gestión de favoritos se implementará en breve.</p>
+        </section>
+        <section id="quienes-somos" class="mb-5">
+            <h2>Quiénes somos</h2>
+            <p>Esta aplicación consume la API de Harry Potter para mostrar información de personajes.</p>
+        </section>
+    </main>
+    <footer class="bg-dark text-white py-3 text-center">
+        <p>2º DAW · DWEC</p>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>

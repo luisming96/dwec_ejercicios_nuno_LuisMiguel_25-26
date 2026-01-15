@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 07 - Selects Encadenados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-primary text-white py-4 mb-4">
+        <div class="container">
+            <h1 class="h3 mb-0">Ejercicio 07 - Selects Encadenados</h1>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        Ciclos Formativos (Encadenados)
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="mb-3">
+                            <label for="selectCiclo" class="form-label">Selecciona Ciclo:</label>
+                            <select id="selectCiclo" class="form-select">
+                                <option value="">-- Elige Ciclo --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectModulo" class="form-label">Selecciona Módulo:</label>
+                            <select id="selectModulo" class="form-select" disabled>
+                                <option value="">-- Primero elige un ciclo --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectRA" class="form-label">Selecciona RA:</label>
+                            <select id="selectRA" class="form-select" disabled>
+                                <option value="">-- Primero elige un módulo --</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-light border rounded">
+                            <strong>Has seleccionado:</strong>
+                            <p id="parrafoSalida" class="text-primary mb-0">...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 small">&copy; 2025 - Ejercicios JavaScript con Bootstrap</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ejercicio07.js"></script>
+</body>
+</html>
