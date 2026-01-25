@@ -359,8 +359,8 @@ class Tienda {
         return ebook;
     }
 
-    crearTipoEnvio(nombre, precio, dias) {
-        const tipo = new TipoEnvio(nombre, dias, precio);
+    crearTipoEnvio(nombre, precio, dias, importeMinimo = 0) {
+        const tipo = new TipoEnvio(nombre, dias, precio, importeMinimo);
         this.#tiposEnvios.insertarTipos([tipo]);
         return tipo;
     }

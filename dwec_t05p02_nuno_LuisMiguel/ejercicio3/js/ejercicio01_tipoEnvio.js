@@ -3,12 +3,14 @@ class TipoEnvio {
     #diasMaximo;
     #pesoMaximo;
     #precio;
+    #importeMinimo;
 
-    constructor(nombre, diasMaximo, precio) {
+    constructor(nombre, diasMaximo, precio, importeMinimo = 0) {
         this.nombre = nombre;
         this.diasMaximo = diasMaximo;
         this.#pesoMaximo = 0;
         this.precio = precio;
+        this.#importeMinimo = importeMinimo;
     }
 
     get nombre() {
@@ -48,6 +50,16 @@ class TipoEnvio {
     set precio(precio) {
         if (Util.validarReal(precio)) {
             this.#precio = precio;
+        }
+    }
+
+    get importeMinimo() {
+        return this.#importeMinimo;
+    }
+
+    set importeMinimo(importe) {
+        if (Util.validarReal(importe)) {
+            this.#importeMinimo = importe;
         }
     }
 

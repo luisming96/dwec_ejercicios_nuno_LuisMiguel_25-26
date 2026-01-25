@@ -153,19 +153,24 @@ class Pedido {
         this.#precioTotalConEnvioSinIVA = 0;
         this.#precioTotalConEnvioConIVA = 0;
 
+        // Sumar precio de todos los libros
         this.#librosPedido.forEach((unidades, libro) => {
-            const subtotal = libro.precio * unidades;
-            this.#precioTotalSinEnvioSinIVA += subtotal;
+            this.#precioTotalSinEnvioSinIVA += libro.precio * unidades;
         });
 
+        // Añadir envío si hay libros físicos
+        let precioEnvio = 0;
         if (this.hayLibrosFisicos() && this.#tipoEnvioPedido !== null) {
-            this.#precioTotalConEnvioSinIVA = this.#precioTotalSinEnvioSinIVA + this.#tipoEnvioPedido.precio;
-        } else {
-            this.#precioTotalConEnvioSinIVA = this.#precioTotalSinEnvioSinIVA;
+            const subtotal = Math.round(this.#precioTotalSinEnvioSinIVA * 100) / 100;
+            // Envío gratis si supera el importe mínimo
+            precioEnvio = (subtotal >= this.#tipoEnvioPedido.importeMinimo && this.#tipoEnvioPedido.importeMinimo > 0) 
+                ? 0 
+                : this.#tipoEnvioPedido.precio;
         }
-
-        const IVA = 1.21;
-        this.#precioTotalConEnvioConIVA = this.#precioTotalConEnvioSinIVA * IVA;
+        
+        // Total final (precios ya incluyen IVA)
+        this.#precioTotalConEnvioSinIVA = this.#precioTotalSinEnvioSinIVA + precioEnvio;
+        this.#precioTotalConEnvioConIVA = this.#precioTotalConEnvioSinIVA;
     }
 
     aplicarDescuento(porcentajeDescuento) {
@@ -176,9 +181,7 @@ class Pedido {
         const descuentoCalculado = (this.#precioTotalSinEnvioSinIVA * porcentajeDescuento) / 100;
         this.#descuento = descuentoCalculado;
         this.#precioTotalConEnvioSinIVA -= descuentoCalculado;
-        
-        const IVA = 1.21;
-        this.#precioTotalConEnvioConIVA = this.#precioTotalConEnvioSinIVA * IVA;
+        this.#precioTotalConEnvioConIVA = this.#precioTotalConEnvioSinIVA;
         
         return true;
     }
